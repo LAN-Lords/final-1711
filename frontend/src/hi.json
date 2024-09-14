@@ -1,0 +1,72 @@
+{
+    "Welcome to Railmadad": "रेलमदाद में आपका स्वागत है",
+    "Your voice matters. Our AI-powered complaint management system ensures your concerns are heard and addressed efficiently.": "आपकी आवाज महत्वपूर्ण है। हमारा एआई-सक्षम शिकायत प्रबंधन प्रणाली सुनिश्चित करती है कि आपकी चिंताओं को सुना और कुशलतापूर्वक संबोधित किया जाए।",
+    "File a Complaint": "शिकायत दर्ज करें",
+    "Track Complaint": "शिकायत ट्रैक करें",
+    "Key Features": "मुख्य विशेषताएँ",
+    "AI-Powered Categorization": "एआई-सक्षम श्रेणीकरण",
+    "Real-time Updates": "वास्तविक समय की अपडेट्स",
+    "Multilingual Support": "बहुभाषी समर्थन",
+    "How It Works": "यह कैसे काम करता है",
+    "File Complaint": "शिकायत दर्ज करें",
+    "AI Processing": "एआई प्रसंस्करण",
+    "Staff Assignment": "कर्मचारी असाइनमेंट",
+    "Resolution & Feedback": "समाधान और फीडबैक",
+    "Contact Us": "हमसे संपर्क करें",
+    "Emergency Helpline": "आपातकालीन हेल्पलाइन",
+    "Available 24/7 for urgent assistance": "तत्काल सहायता के लिए 24/7 उपलब्ध",
+    "General Enquiries": "सामान्य पूछताछ",
+    "For non-urgent queries and feedback": "गैर-तत्काल प्रश्नों और फीडबैक के लिए",
+    "Terms of Service": "सेवा की शर्तें",
+    "Privacy Policy": "गोपनीयता नीति",
+    "Accessibility": "सुलभता",
+
+
+
+
+    "complaint": {
+    "file_complaint": "शिकायत दर्ज करें",
+    "help_resolve": "हम आपकी समस्या को हल करने में मदद के लिए यहां हैं। अपनी शिकायत दर्ज करने के लिए नीचे दिए गए चरणों का पालन करें।",
+    "attach_media": "मीडिया अटैच करें (वैकल्पिक)",
+    "ai_analysis": "AI आपके मीडिया का विश्लेषण करेगा और उपयुक्त श्रेणी का सुझाव देगा।",
+    "journey_details": "यात्रा विवरण",
+    "train_number": "ट्रेन नंबर",
+    "enter_train_number": "ट्रेन नंबर दर्ज करें",
+    "pnr": "PNR",
+    "enter_pnr": "PNR दर्ज करें",
+    "coach_number": "कोच नंबर",
+    "enter_coach_number": "कोच नंबर दर्ज करें",
+    "seat_number": "सीट नंबर",
+    "enter_seat_number": "सीट नंबर दर्ज करें",
+    "describe_issue": "समस्या का वर्णन करें",
+    "provide_details": "अपनी शिकायत के बारे में विवरण प्रदान करें...",
+    "submit": "शिकायत सबमिट करें",
+    "submitted_successfully": "शिकायत सफलतापूर्वक दर्ज कर दी गई!"
+  },
+  "ccomplaint": {
+    "status": "शिकायत की स्थिति",
+    "check_status": "अपनी शिकायत की स्थिति जांचें और जिम्मेदार विभाग से संपर्क करें।",
+    "complaint_id": "शिकायत ID",
+    "enter_complaint_id": "अपनी शिकायत ID दर्ज करें",
+    "under_review": "समीक्षा में",
+    "under_review_description": "आपकी शिकायत वर्तमान में समीक्षा में है।",
+    "assigned": "सौंपा गया",
+    "assigned_description": "आपकी शिकायत को एक जिम्मेदार अधिकारी को सौंपा गया है।",
+    "resolved": "सुलझा हुआ",
+    "resolved_description": "आपकी शिकायत का समाधान कर दिया गया है।",
+    "complaint_status": "शिकायत की स्थिति",
+    "complaint_details": "शिकायत के विवरण",
+    "train_no": "ट्रेन नंबर",
+    "pnr_no": "PNR नंबर",
+    "coach_no": "कोच नंबर",
+    "seat_no": "सीट नंबर",
+    "department": "विभाग",
+    "feedback": "प्रतिक्रिया",
+    "feedback_placeholder": "शिकायत समाधान प्रक्रिया पर अपनी प्रतिक्रिया साझा करें...",
+    "submit_feedback": "प्रतिक्रिया सबमिट करें"
+  },
+  "common": {
+    "loading": "लोड हो रहा है..."
+  }
+  }
+  

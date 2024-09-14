@@ -10,7 +10,7 @@ const complaintRoutes=require('./routes/ComplaintRoutes.js');
 const uploadMediaRoute = require('./s3Upload.js');
 const SubmitComplain=require('./routes/submitComplaint.js');
 const AnalysisRoutes = require('./routes/AnalysisRoutes.js');
-
+const TransferIrrelavent =require('./routes/TransferandIrrelavent.js');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
@@ -29,7 +29,7 @@ app.use('/complaintstatus',complaintStatus);
 app.use('/complaintslogs', complaintRoutes);
 app.use('/', uploadMediaRoute);
 app.use('/', SubmitComplain);
-
+app.use('/resolve',TransferIrrelavent);
 app.use('/complaints', AnalysisRoutes);
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

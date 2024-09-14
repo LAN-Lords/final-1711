@@ -110,7 +110,7 @@ export default function ComplaintLog() {
               <th>Category</th>
               <th>Current Status</th>
               <th>Department</th>
-              <th>Action</th>
+              <th>Auto Desc</th>
             </tr>
           </thead>
           <tbody>
@@ -123,22 +123,7 @@ export default function ComplaintLog() {
                   {complaint.department}
                 </td>
                 <td>
-                  <Dropdown>
-                    <Dropdown.Toggle variant="outline-secondary" size="sm">
-                      Change Status <ChevronDown className="ms-2 h-4 w-4" />
-                    </Dropdown.Toggle>
-                    <Dropdown.Menu>
-                      <Dropdown.Item onClick={() => handleStatusUpdate(complaint._id, 'Resolved')}>
-                        Resolved
-                      </Dropdown.Item>
-                      <Dropdown.Item onClick={() => handleStatusUpdate(complaint._id, 'Under Review')}>
-                        Under Review
-                      </Dropdown.Item>
-                      <Dropdown.Item onClick={() => handleStatusUpdate(complaint._id, 'Assigned')}>
-                        Assigned
-                      </Dropdown.Item>
-                    </Dropdown.Menu>
-                  </Dropdown>
+                  {complaint.complaint_description}
                 </td>
               </tr>
             ))}

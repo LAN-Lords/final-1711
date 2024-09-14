@@ -678,7 +678,7 @@ export default function DepartmentPage() {
 
   const handleTransfer = async () => {
     try {
-      await axios.post(`/complaints/${selectedComplaint.id}/transfer`, { department: transferDepartment });
+      await axios.post(`http://localhost:8001/resolve/${selectedComplaint._id}/transfer`, { department: transferDepartment });
       setShowTransferModal(false);
       setSelectedComplaint(null);
     } catch (error) {
@@ -688,7 +688,7 @@ export default function DepartmentPage() {
 
   const handleReportIrrelevance = async () => {
     try {
-      await axios.post(`/complaints/${selectedComplaint.id}/report`);
+      await axios.post(`http://localhost:8001/complaints/${selectedComplaint._id}/report`);
       setShowReportModal(false);
       setSelectedComplaint(null);
     } catch (error) {
