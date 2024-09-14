@@ -13,6 +13,8 @@ import SignIn from './Components/siginin/Signin.jsx';
 import ComplaintForm from './Components/ComplaintForm/ComplaintForm.jsx';
 import ComplaintStatus from './Components/ComplaintStatus/ComplaintStatus.jsx';
 import AdminDashboard from  "./Components/AdminDashboard/AdminDashboard.jsx"
+import ComplaintLog from './Components/ComplaintLog/ComplaintLog.jsx';
+import DepartmentComplaint from './Components/DepartmentComplaints/DepartmetComplaint.jsx';
 function App() {
   return (
     <div className="App">
@@ -29,6 +31,9 @@ function App() {
         <Route path="/complain" element={<ComplaintForm />} />
         <Route path="/complainStatus" element={<ComplaintStatus />} />
         <Route path="/admindashboard" element={<AdminDashboard />} />
+        <Route path="/complainlogs" element={<ComplaintLog />} />
+        <Route path="/department" element={<DepartmentComplaint/>}/>
+        
       </Routes>
     </Router>
     

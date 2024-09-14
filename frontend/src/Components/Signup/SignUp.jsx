@@ -72,7 +72,7 @@ const SignUp = () => {
 
     try {
       console.log('Submitting sign-up form');
-      const response = await axios.post('http://localhost:8000/auth/signup', {
+      const response = await axios.post('http://localhost:8001/auth/signup', {
         name,
         mobileNumber,
         email,

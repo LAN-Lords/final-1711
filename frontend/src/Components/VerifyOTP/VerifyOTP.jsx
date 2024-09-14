@@ -11,7 +11,7 @@ const navigate = useNavigate();
      e.preventDefault();
 
      try {
-       const response = await axios.post('http://localhost:8000/auth/verify-otp', {
+       const response = await axios.post('http://localhost:8001/auth/verify-otp', {
          mobileNumber,
          otp,
        });
