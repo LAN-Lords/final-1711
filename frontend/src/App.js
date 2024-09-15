@@ -49,8 +49,10 @@
 // export default App;
 
 
-
+import React, { useState } from 'react';
 import './App.css';
+import ChatBot from "./screens/chatBot.jsx";
+import { Toaster, toast } from 'sonner'
 import { useTranslation } from 'react-i18next';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { AuthProvider } from './AuthContext.js';
@@ -68,6 +70,26 @@ import LanguageSelector from './Components/languageSelector'; // Import Language
 
 function App() {
 
+  const [prompt, setPrompt] = useState('');
+    const [response, setResponse] = useState('');
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            const res = await fetch('http://localhost:8000/api/generate', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ prompt }),
+            });
+            const data = await res.json();
+            setResponse(data.response);
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    };
+
   return (
     <div className="App">
       <AuthProvider>
@@ -84,6 +106,13 @@ function App() {
             <Route path="/complainlogs" element={<ComplaintLog />} />
             <Route path="/department" element={<DepartmentComplaint />} />
           </Routes>
+          <ChatBot  handleSubmit={handleSubmit}
+                   prompt={prompt}
+                   setPrompt={setPrompt}
+                   response={response}
+                    />
+<Toaster />
+
         </Router>
       </AuthProvider>
     </div>

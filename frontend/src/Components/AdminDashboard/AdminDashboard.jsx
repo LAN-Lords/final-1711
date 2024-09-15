@@ -257,7 +257,7 @@ const percentage = totalCategoryValue > 0 ? ((mostCommonCategory.value / totalCa
       <header className="px-4 py-2 bg-light border-bottom d-flex align-items-center">
         <h1 className="h5 font-weight-bold">Indian Railways Admin Dashboard</h1>
         <nav className="ml-auto">
-          <Link to='/complainlogs'><button>Complain Logs</button></Link>
+          <Link to='/complainlogs'><button className='btn btn-outline-dark'>Complain Logs</button></Link>
         </nav>
       </header>
       <main className="flex-grow-1 p-5 my-3 mt-5 rounded-4" style={{ maxWidth: '90vw', background: '#f0f7ff', marginLeft: '5vw' }}>
