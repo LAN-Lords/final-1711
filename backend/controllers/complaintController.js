@@ -10,6 +10,77 @@ const getZoneFromTrainNo = (trainNo) => {
     return 'Unknown Zone';
 };
 
+// const getDashboardData = async (req, res) => {
+//     try {
+//         const complaints = await Complaint.find();
+
+//         // Zone data
+//         const zoneData = complaints.reduce((acc, complaint) => {
+//             const zone = getZoneFromTrainNo(complaint.trainNo);
+//             if (!acc[zone]) {
+//                 acc[zone] = { zone, total: 0, resolved: 0, avgTime: 0 };
+//             }
+//             acc[zone].total += 1;
+//             if (complaint.status === 'Resolved') acc[zone].resolved += 1;
+//             acc[zone].avgTime += (complaint.resolvedAt ? (complaint.resolvedAt - complaint.createdAt) / (1000 * 60 * 60) : 0);
+//             return acc;
+//         }, {});
+
+//         const formattedZoneData = Object.values(zoneData).map(zone => ({
+//             ...zone,
+//             avgTime: zone.total ? zone.avgTime / zone.total : 0
+//         }));
+
+//         // Category data
+//         const categoryData = complaints.reduce((acc, complaint) => {
+//             const category = complaint.category || 'Miscellaneous';
+//             if (!acc[category]) {
+//                 acc[category] = { name: category, value: 0 };
+//             }
+//             acc[category].value += 1;
+//             return acc;
+//         }, {});
+
+//         const formattedCategoryData = Object.values(categoryData);
+
+//         // Performance data by department
+//         const departmentData = complaints.reduce((acc, complaint) => {
+//             const department = complaint.department || 'General/Miscellaneous Department';
+//             if (!acc[department]) {
+//                 acc[department] = { department, responseTime: 0, resolved: 0, count: 0 };
+//             }
+//             if (complaint.status === 'Resolved') {
+//                 acc[department].resolved += 1;
+//                 acc[department].responseTime += (complaint.resolvedAt - complaint.createdAt) / (1000 * 60 * 60); // response time in hours
+//             }
+//             acc[department].count += 1;
+//             return acc;
+//         }, {});
+
+//         const formattedPerformanceData = Object.values(departmentData).map(department => ({
+//             ...department,
+//             responseTime: department.count ? department.responseTime / department.count : 0,
+//             satisfactionRate: department.resolved ? (department.resolved / department.count) * 100 : 0
+//         }));
+
+//         res.json({
+//             complaintData: formattedZoneData,
+//             categoryData: formattedCategoryData,
+//             performanceData: formattedPerformanceData
+//         });
+//     } catch (error) {
+//         console.error('Error fetching dashboard data:', error);
+//         res.status(500).json({ message: 'Error fetching dashboard data', error });
+//     }
+// };
+
+// module.exports = { getDashboardData };
+
+
+
+
+
+
 const getDashboardData = async (req, res) => {
     try {
         const complaints = await Complaint.find();
@@ -63,10 +134,35 @@ const getDashboardData = async (req, res) => {
             satisfactionRate: department.resolved ? (department.resolved / department.count) * 100 : 0
         }));
 
+       // Created and resolved complaints by day
+       const timeData = complaints.reduce((acc, complaint) => {
+        const createdDay = complaint.createdAt.toISOString().slice(0, 10); // 'YYYY-MM-DD' format for day
+        const resolvedDay = complaint.resolvedAt ? complaint.resolvedAt.toISOString().slice(0, 10) : null;
+
+        // Increment total complaints for createdDay
+        if (!acc[createdDay]) {
+            acc[createdDay] = { day: createdDay, total: 0, resolved: 0 };
+        }
+        acc[createdDay].total += 1;
+
+        // Increment resolved complaints for resolvedDay if it exists
+        if (resolvedDay) {
+            if (!acc[resolvedDay]) {
+                acc[resolvedDay] = { day: resolvedDay, total: 0, resolved: 0 };
+            }
+            acc[resolvedDay].resolved += 1;
+        }
+
+        return acc;
+    }, {});
+
+    const formattedTimeData = Object.values(timeData);
+
         res.json({
             complaintData: formattedZoneData,
             categoryData: formattedCategoryData,
-            performanceData: formattedPerformanceData
+            performanceData: formattedPerformanceData,
+            timeData: formattedTimeData  // Send the time data to the frontend
         });
     } catch (error) {
         console.error('Error fetching dashboard data:', error);

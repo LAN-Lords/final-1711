@@ -206,7 +206,7 @@ import axios from 'axios';
 const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
 
 export default function AdminDashboard() {
-  const [data, setData] = useState({ complaintData: [], categoryData: [], performanceData: [] });
+  const [data, setData] = useState({ complaintData: [], categoryData: [], performanceData: [] , timeData: []});
   const [selectedZone, setSelectedZone] = useState('All');
   const [selectedDepartment, setSelectedDepartment] = useState('All');
 
@@ -224,7 +224,7 @@ export default function AdminDashboard() {
     fetchData();
   }, []);
 
-  const { complaintData, categoryData, performanceData } = data;
+  const { complaintData, categoryData, performanceData ,timeData} = data;
 
   const totalComplaints = complaintData.reduce((sum, zone) => sum + zone.total, 0);
   const totalResolved = complaintData.reduce((sum, zone) => sum + zone.resolved, 0);
@@ -374,28 +374,28 @@ const percentage = totalCategoryValue > 0 ? ((mostCommonCategory.value / totalCa
             </div>
           </div>
         </div>
-
         <div className='row justify-center'>
-          <div className="col-md-6">
-            <div className="card shadow-sm mb-4 py-5 my-5">
-              <div className="card-body">
+    <div className="col-md-6">
+        <div className="card shadow-sm mb-4 py-5 my-5">
+            <div className="card-body">
                 <h2 className="h5 font-weight-bold">Complaint Trends Over Time</h2>
                 <div className="chart-container" style={{ height: '350px' }}>
-                  <ResponsiveContainer width="100%" height="100%">
-                    <LineChart data={complaintData}>
-                      <CartesianGrid strokeDasharray="3 3" />
-                      <XAxis dataKey="month" />
-                      <YAxis />
-                      <Tooltip />
-                      <Line type="monotone" dataKey="total" stroke="#8884d8" name="Total Complaints" />
-                      <Line type="monotone" dataKey="resolved" stroke="#82ca9d" name="Resolved Complaints" />
-                    </LineChart>
-                  </ResponsiveContainer>
+                    <ResponsiveContainer width="100%" height="100%">
+                        <LineChart data={timeData}>  {/* Use the backend data */}
+                            <CartesianGrid strokeDasharray="3 3" />
+                            <XAxis dataKey="day" /> {/* X-axis with days */}
+                            <YAxis /> {/* Y-axis for the number of complaints */}
+                            <Tooltip /> {/* Tooltip for showing details on hover */}
+                            <Line type="monotone" dataKey="total" stroke="#8884d8" name="Total Complaints" />
+                            <Line type="monotone" dataKey="resolved" stroke="#82ca9d" name="Resolved Complaints" />
+                        </LineChart>
+                    </ResponsiveContainer>
                 </div>
-              </div>
             </div>
-          </div>
         </div>
+    </div>
+</div>
+
 
         
       </main>
