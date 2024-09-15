@@ -12,6 +12,7 @@ const uploadMediaRoute = require('./s3Upload.js');
 const SubmitComplain=require('./routes/submitComplaint.js');
 const AnalysisRoutes = require('./routes/AnalysisRoutes.js');
 const TransferIrrelavent =require('./routes/TransferandIrrelavent.js');
+const Ocr=require('./routes/Ocr.js');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
@@ -91,6 +92,8 @@ How is emergency maintenance handled?
 give some small response not too big
 if possible give output in proper format means well structured
 if possible answer in points format..like it should look like json format
+in your response you should not give * or any special charachter you can use number
+Also reply in the same language that user ask...like if user ask "Varanasi me kon kon se railway stations hain?" so in this case you should able to detect hindi language and you should reply in hindi text language
 `;
     try {
         const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
@@ -123,5 +126,5 @@ app.use('/', uploadMediaRoute);
 app.use('/', SubmitComplain);
 app.use('/resolve',TransferIrrelavent);
 app.use('/complaints', AnalysisRoutes);
-
+app.use('/',Ocr)
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

@@ -105,7 +105,7 @@ const ChatBot = ({ handleSubmit, prompt, setPrompt }) => {
                 🤖
             </div>
             {isOpen && (
-                <div className="chatbot-window card">
+                <div className="chatbot-window card bg-dark text-white">
                     <button className="btn-close close-button" onClick={toggleChatBot}></button>
                     <form onSubmit={onSubmit}>
                         <div className="mb-3">
