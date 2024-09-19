@@ -363,9 +363,9 @@ const percentage = totalCategoryValue > 0 ? ((mostCommonCategory.value / totalCa
                   {performanceData.map((performance, index) => (
                     <tr key={index}>
                       <td>{performance.department}</td>
-                      <td>{performance.responseTime} min</td>
+                      <td>{parseFloat(performance.responseTime).toFixed(2)} min</td>
                       <td>
-                        <span className="badge bg-success">{performance.satisfactionRate}%</span>
+                        <span className="badge bg-success">{parseFloat(performance.satisfactionRate).toFixed(2)}%</span>
                       </td>
                     </tr>
                   ))}

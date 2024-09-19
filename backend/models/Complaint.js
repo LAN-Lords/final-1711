@@ -6,6 +6,8 @@ const complaintSchema = new mongoose.Schema({
     pnrNo: { type: String, default: null },
     coachNo: { type: String, default: null },
     seatNo: { type: String, default: null },
+    trainName: { type: String, default: null },
+    currentLocation: { type: String, default: null }, 
     complaint_description: { type: String, default: null },
     file: { type: String, default: null },
     category: { type: String, default: null },
