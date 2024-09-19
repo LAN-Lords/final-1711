@@ -662,21 +662,25 @@ function ComplaintForm() {
     form.append('pnrNo', ocrData.pnrNo || formData.pnrNo);
     form.append('seatNo', ocrData.seatNo || formData.seatNo);
     form.append('coachNo', ocrData.coachNo || formData.coachNo);
-    form.append('trainName', formData.trainName);
-    form.append('currentLocation', formData.currentLocation);
+    form.append('trainName', formData.trainName || formData.trainName); 
+    form.append('currentLocation', formData.currentLocation || formData.currentLocation);
     form.append('file', file);
 
     try {
       const response = await fetch('http://localhost:8001/upload-media', {
         method: 'POST',
         body: form,
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
+       
       });
-
-      setMessage(`Complaint submitted successfully! File URL: ${response.data.url}`);
-      setError('');
+      if (response.ok) {
+        const responseData = await response.json();
+        setMessage(`Complaint submitted successfully! File URL: ${responseData.url}`);
+        setError('');
+      } else {
+        const errorData = await response.json();  // Check for more details from the server
+        setError(`An error occurred: ${errorData.message || 'Unknown error'}`);
+        setMessage('');
+      }
     } catch (err) {
       setError('An error occurred while submitting the complaint. Please try again.');
       setMessage('');
