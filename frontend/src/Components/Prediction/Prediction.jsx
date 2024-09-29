@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Row, Col, Card, Form, Button, Table } from 'react-bootstrap';
 
-export default function Prediction() {
+export default function Prection() {
   const [predictedMaintenance, setPredictedMaintenance] = useState([]);
   const [selectedLocation, setSelectedLocation] = useState('All');
   const [loading, setLoading] = useState(true);
@@ -11,12 +11,12 @@ export default function Prediction() {
   useEffect(() => {
     const fetchMaintenanceData = async () => {
       try {
-        const response = await fetch('http://localhost:5000/api/maintenance'); // Adjust the URL to match your backend endpoint
+        const response = await fetch('http://localhost:5000/api/maintenance');
         if (!response.ok) {
           throw new Error('Failed to fetch data');
         }
         const data = await response.json();
-        setPredictedMaintenance(data); // Assuming the backend returns an array of predicted maintenance objects
+        setPredictedMaintenance(data); 
         setLoading(false);
       } catch (err) {
         setError(err.message);
