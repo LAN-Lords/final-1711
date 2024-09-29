@@ -1,44 +1,20 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Container, Row, Col, Card, Form, Button, Table } from 'react-bootstrap';
 
+const predictedMaintenance = [
+  { id: 1, location: 'Delhi', trainNo: '12425', issueCategory: 'Crowd Control', dueDate: '2024-08-15' },
+  { id: 2, location: 'Mumbai Central', trainNo: '12951', issueCategory: 'Cleanliness', dueDate: '2024-08-18' },
+  { id: 3, location: 'Chennai Egmore', trainNo: '12301', issueCategory: 'Maintenance', dueDate: '2024-08-20' },
+  { id: 4, location: 'Howrah Junction', trainNo: '12270', issueCategory: 'Comfort', dueDate: '2024-08-22' },
+  { id: 5, location: 'Yesvantpur Junction', trainNo: '22692', issueCategory: 'Cleanliness', dueDate: '2024-08-25' },
+];
+
 export default function Prection() {
-  const [predictedMaintenance, setPredictedMaintenance] = useState([]);
   const [selectedLocation, setSelectedLocation] = useState('All');
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
 
-  // Fetch data from the backend
-  useEffect(() => {
-    const fetchMaintenanceData = async () => {
-      try {
-        const response = await fetch('http://localhost:5000/api/maintenance');
-        if (!response.ok) {
-          throw new Error('Failed to fetch data');
-        }
-        const data = await response.json();
-        setPredictedMaintenance(data); 
-        setLoading(false);
-      } catch (err) {
-        setError(err.message);
-        setLoading(false);
-      }
-    };
-
-    fetchMaintenanceData();
-  }, []);
-
-  // Filter data based on selected location
   const filteredMaintenance = selectedLocation === 'All' 
     ? predictedMaintenance 
     : predictedMaintenance.filter(item => item.location === selectedLocation);
-
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
-  if (error) {
-    return <div>Error: {error}</div>;
-  }
 
   return (
     <Container className="my-4">
@@ -58,6 +34,7 @@ export default function Prection() {
             <option value="Bangalore">Bangalore</option>
           </Form.Select>
         </Col>
+        
       </Row>
 
       <Card>
