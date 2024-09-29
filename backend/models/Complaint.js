@@ -20,7 +20,8 @@ const complaintSchema = new mongoose.Schema({
     createdAt: { type: Date, default: Date.now },
     createdMonth: { type: String, default: null },
     resolvedMonth: { type: String, default: null },
-    isArchived: { type: Boolean, default: false }
+    isArchived: { type: Boolean, default: false },
+    predictedIssue: { type: String, default: null }
 });
 
 // Define the mapping between categories and departments

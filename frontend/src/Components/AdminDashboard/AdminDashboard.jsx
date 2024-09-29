@@ -258,61 +258,62 @@ const percentage = totalCategoryValue > 0 ? ((mostCommonCategory.value / totalCa
         <h1 className="h5 font-weight-bold">Indian Railways Admin Dashboard</h1>
         <nav className="ml-auto">
           <Link to='/complainlogs'><button className='btn btn-outline-dark'>Complain Logs</button></Link>
+          <Link to='/prediction'><button className='btn btn-outline-dark mx-2'>Future Prections</button></Link>
         </nav>
       </header>
-      <main className="flex-grow-1 p-5 my-3 mt-5 rounded-4" style={{ maxWidth: '90vw', background: '#f0f7ff', marginLeft: '5vw' }}>
-        <div className="row my-5">
-          <div className="col-lg-3 mb-4">
+      <main className="flex-grow-1 p-5 my-3  rounded-4" style={{ maxWidth: '90vw', background: '#f0f7ff', marginLeft: '5vw' }}>
+        <div className="row ">
+          <div className="col-lg-3 mb-1">
             <div className="card shadow-sm">
               <div className="card-body">
                 <div className="d-flex justify-content-between">
                   <h2 className="h6">Total Complaints</h2>
                   <AlertCircle className="text-muted" />
                 </div>
-                <div className="display-4">{totalComplaints}</div>
+                <div className="display-4" style={{fontSize:"3rem"}}>{totalComplaints}</div>
                 <p className="text-muted small">Complaints</p>
               </div>
             </div>
           </div>
-          <div className="col-lg-3 mb-4">
+          <div className="col-lg-3 mb-1">
             <div className="card shadow-sm">
               <div className="card-body">
                 <div className="d-flex justify-content-between">
                   <h2 className="h6">Resolved Complaints</h2>
                   <ThumbsUp className="text-muted" />
                 </div>
-                <div className="display-4">{totalResolved}</div>
+                <div className="display-4" style={{fontSize:"3rem"}}>{totalResolved}</div>
                 <p className="text-muted small">Resolved Complaints</p>
               </div>
             </div>
           </div>
-          <div className="col-lg-3 mb-4">
+          <div className="col-lg-3 mb-1">
             <div className="card shadow-sm">
               <div className="card-body">
                 <div className="d-flex justify-content-between">
                   <h2 className="h6">Avg. Resolution Time</h2>
                   <Clock className="text-muted" />
                 </div>
-                <div className="display-4">{averageResolutionTime} hours</div>
+                <div className="display-4" style={{fontSize:"3rem"}}>{averageResolutionTime} hours</div>
                 <p className="text-muted small">Avg</p>
               </div>
             </div>
           </div>
-          <div className="col-lg-3 mb-4">
+          <div className="col-lg-3 mb-1">
             <div className="card shadow-sm">
               <div className="card-body">
                 <div className="d-flex justify-content-between">
                   <h2 className="h6">Most Common Category</h2>
                   <MessageSquare className="text-muted" />
                 </div>
-                <div className="display-4">{mostCommonCategory.name}</div>
+                <div className="display-4 " style={{fontSize:"2.5rem"}}>{mostCommonCategory.name}</div>
                 <p className="text-muted small">{percentage}% of total complaints</p>
               </div>
             </div>
           </div>
         </div>
 
-        <div className="card shadow-sm mb-4 mt-5 py-5">
+        <div className="card shadow-sm mb-4 mt-2 py-3">
           <div className="card-body">
             <h2 className="h5 font-weight-bold">Complaints by Zone</h2>
             <div className="chart-container" style={{ height: '350px' }}>

@@ -67,6 +67,8 @@ import AdminDashboard from "./Components/AdminDashboard/AdminDashboard.jsx";
 import ComplaintLog from './Components/ComplaintLog/ComplaintLog.jsx';
 import DepartmentComplaint from './Components/DepartmentComplaints/DepartmetComplaint.jsx';
 import LanguageSelector from './Components/languageSelector'; // Import LanguageSelector
+import Prediction from './Components/Prediction/Prediction.jsx';
+
 
 function App() {
 
@@ -105,6 +107,7 @@ function App() {
             <Route path="/admindashboard" element={<AdminDashboard />} />
             <Route path="/complainlogs" element={<ComplaintLog />} />
             <Route path="/department" element={<DepartmentComplaint />} />
+            <Route path="/prediction" element={<Prediction />} />
           </Routes>
           <ChatBot  handleSubmit={handleSubmit}
                    prompt={prompt}
