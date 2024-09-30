@@ -216,7 +216,7 @@ export default function ComplaintLog() {
   );
 
   return (
-    <Card className="w-100 mx-auto my-3">
+    <Card className="w-100 mx-auto my-3" style={{maxWidth:"60vw"}}>
       <Card.Header className="d-flex justify-content-between align-items-center">
         <h5>Complaint Status Update</h5>
         <Button variant="outline-secondary" size="sm">
@@ -258,7 +258,7 @@ export default function ComplaintLog() {
             <tr>
               <th>Complaint ID</th>
               <th>Category</th>
-              <th>Current Status</th>
+              
               <th>Department</th>
               <th>Auto Desc</th>
               <th>Urgency</th>
@@ -271,7 +271,7 @@ export default function ComplaintLog() {
               >
                 <td>{complaint._id}</td>
                 <td>{complaint.category}</td>
-                <td>{getStatusBadge(complaint.status)}</td>
+                
                 <td>{complaint.department}</td>
                 <td>{complaint.complaint_description}</td>
                 <td>{getUrgencyBadge(complaint.urgency)}</td>
